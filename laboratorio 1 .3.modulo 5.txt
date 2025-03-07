@@ -1,0 +1,173 @@
+video  
+
+date
+mkdir contabilidad
+ls 
+cd contabilidad
+touch presupuesto{1..100}.txt
+ls
+clear
+rsync -arv contabilidad 2024-2369@192.168.100.141:/home/2024-2369/
+
+
+ls 
+cd contabilidad
+
+
+cd contabilidad
+vi rsync.sh
+
+#!/bin/bash
+rsync -arv contabilidad 2024-2369@192.168.100.141:/home/2024-2369/
+
+:wq
+
+sudo chmod +x rsync.sh
+
+crontab -e
+
+* * * * * /home/2024-2369/contabilidad/rsync.sh
+:wq
+
+ls
+touch lista_de_pagos{1..10}
+ls
+
+
+ls  rm -rf *
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+
+
+touch es_s_no_h.txt
+
+ls  
+date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+video 3  
+
+date
+sudo dnf install keepalived
+systemctl enable keepalived 
+systemctl start keepalived 
+systemctl restart keepalived
+cd /etc/keepalived/
+ls
+vi /etc/keepalived.conf
+
+
+vrrp_instance VI_1 {
+
+state MASTER
+
+interface enp0s3
+
+virtual_router_id 51
+
+priority 100
+
+advert_int 1
+
+authentication {
+
+auth_type PASS
+
+auth_pass 12345
+
+}
+
+virtual_ipaddress {
+
+192.168.100.141
+
+}
+
+:wq
+
+ifconfig
+
+vi /var/www/html/website1/index.html 
+
+<html>
+<head>
+
+	<title>SERVER1</title>
+
+</head>
+<body>
+	<h1>SERVER BACKUP</h1>
+
+</body>
+</html>
+
+:wq
+
+clear
+
+cd /etc/keepalived/
+ls
+vi /etc/keepalived.conf
+
+vrrp_instance VI_1 {
+
+state BACKUP
+
+interface enp0s3
+
+virtual_router_id 51
+
+priority 90
+
+advert_int 1
+
+authentication {
+
+auth_type PASS
+
+auth_pass 12345
+
+}
+ 
+:wq
+
+sudo scp 2024-2369@192.168.100.141:/etc/keepalived/keepalived.conf  .
+
+systemctl enable keepalived 
+systemctl start keepalived 
+systemctl restart keepalived
+
+clear 
+
+date 
+
+
+
+ 
+
+
